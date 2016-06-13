@@ -1,0 +1,102 @@
+classdef Dynamics
+       
+    properties
+        N;
+        
+        v;
+        w;
+    end
+    
+    
+    
+    
+    
+    
+    methods
+        
+        function obj = Dynamics(N, v, w)
+            obj.N = N;
+            obj.v = v;
+            obj.w = w;
+        end
+        
+        
+        
+        
+        function res = f(obj, t, x)
+        
+        res = zeros(obj.N, 1);
+        
+        for i=1:obj.N
+            temp1 = 1;
+            temp2 = 1;
+            for j=1:obj.N
+                if(j~=i)
+    %                 temp1 = temp1* (x(j)/x(i)) ^obj.v(i, j);
+    %                 temp2 = temp2* (x(j)/x(i)) ^(1-obj.v(i, j));
+                    temp1 = temp1* (abs(x(j)/x(i))) ^obj.v(i, j);
+                    temp2 = temp2* (abs(x(j)/x(i))) ^obj.w(i, j);
+                    
+                end
+            end
+            res(i) = obj.mu(i, t) * x(i) * obj.phi(x(i)) * (temp1 - temp2);
+            
+        end
+
+
+        end
+
+
+        
+        
+        
+    end
+    
+    
+    
+    
+    
+    
+    die Anhänge
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    methods(Static)
+        
+        
+        
+        
+        
+        function res = phi(x)
+
+%         res = sqrt(1 - x^2);
+%         res = sqrt(abs(1 - x^2));
+        res = sqrt(x*(1 - x));
+
+        end
+        
+        
+        
+        function res = mu(i, t)
+
+        res = 1;
+
+        end
+
+        
+        
+        
+        
+        
+    end
+    
+end
+
