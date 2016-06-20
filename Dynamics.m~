@@ -16,8 +16,6 @@ classdef Dynamics
         omegaw;
         deltaw;
         
-        lambda;
-        
         xmax;
     end
     
@@ -28,13 +26,12 @@ classdef Dynamics
     
     methods
         
-        function obj = Dynamics(N, v, w, v1, w1, lambda, xmax)
+        function obj = Dynamics(N, v, w, v1, w1, xmax)
             obj.N = N;
             obj.v = v;
             obj.w = w;
             obj.v1 = v1;
             obj.w1 = w1;
-            obj.lambda = lambda;
             obj.xmax = xmax;
             
             %only for 3 dim case
@@ -72,11 +69,11 @@ classdef Dynamics
 %                     temp2 = temp2* (x(j)/x(i)) ^obj.w(i, j);
 %                     temp1 = temp1* (abs(x(j)/x(i))) ^obj.v(i, j);
 %                     temp2 = temp2* (abs(x(j)/x(i))) ^obj.w(i, j);
-%                     temp1 = temp1* x(j) ^obj.v(i, j);
-%                     temp2 = temp2* x(j) ^obj.w(i, j);
+                    temp1 = temp1* x(j) ^obj.v(i, j);
+                    temp2 = temp2* x(j) ^obj.w(i, j);
 %                     % only for 3 dim case
-                    temp1 = temp1* x(j) ^obj.V(i, j, t);
-                    temp2 = temp2* x(j) ^obj.W(i, j, t);
+%                     temp1 = temp1* x(j) ^obj.V(i, j, t);
+%                     temp2 = temp2* x(j) ^obj.W(i, j, t);
 %                     temp1 = temp1* abs(x(j)) ^obj.v(i, j);
 %                     temp2 = temp2* abs(x(j)) ^obj.w(i, j);
                     
@@ -131,16 +128,15 @@ classdef Dynamics
         
         
         function res = V(obj, i, j, t)
-            res = obj.lambda(t)*obj.v(i, j) + (1-obj.lambda(t))*obj.v1(i, j);
-%             res = obj.lambda(t)*obj.v1(i, j) + (1-obj.lambda(t))*obj.v(i, j);
+            res = obj.v(i, j);
             
             
         end
         function res = W(obj, i, j, t)
-            res = obj.lambda(t)*obj.w(i, j) + (1-obj.lambda(t))*obj.w1(i, j);
-%             res = obj.lambda(t)*obj.w1(i, j) + (1-obj.lambda(t))*obj.w(i, j);
+            res = obj.w(i, j);
         end
-        
+        function res = lambda(obj, t)
+        end
         
                
         
