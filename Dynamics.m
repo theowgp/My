@@ -41,6 +41,8 @@ classdef Dynamics
 %                     temp2 = temp2* (abs(x(j)/x(i))) ^obj.w(i, j);
                     temp1 = temp1* x(j) ^obj.v(i, j);
                     temp2 = temp2* x(j) ^obj.w(i, j);
+%                     temp1 = temp1* x(j) ^obj.V(i, j, t);
+%                     temp2 = temp2* x(j) ^obj.W(i, j, t);
 %                     temp1 = temp1* abs(x(j)) ^obj.v(i, j);
 %                     temp2 = temp2* abs(x(j)) ^obj.w(i, j);
                     
@@ -68,6 +70,45 @@ classdef Dynamics
 %           res = 1;
 
         end
+        
+        
+        
+        function res = V(obj, i, j, t)
+            delta = 1 - obj.v(i, j);
+            omega = 2;
+            
+            res = obj.v(i, j);
+            
+            %if rem(j, 2) == 1
+            if j == 1
+                res = res + delta*abs(sin(omega*t));
+            end
+            %if rem(j, 2) == 0
+            if j == 2
+                res = res - delta*abs(sin(omega*t));
+            end
+        end
+        
+        function res = W(obj, i, j, t)
+
+            delta = 1 - obj.w(i, j);
+            omega = 2;
+            
+            res = obj.w(i, j); 
+            
+            %if rem(j, 2) == 1
+            if j == 1
+                res = res + delta*abs(sin(omega*t));
+            end
+            %if rem(j, 2) == 0
+            if j == 2
+                res = res - delta*abs(sin(omega*t));
+            end
+            
+        end
+        
+        
+        
     end
     
     
