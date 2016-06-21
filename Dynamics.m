@@ -37,27 +37,27 @@ classdef Dynamics
             obj.lambda = lambda;
             obj.xmax = xmax;
             
-            %only for 3 dim case
-            obj.omegav = 2;
-            obj.omegaw = 2;
-            
-            %only for 3 dim case
-            obj.deltav = obj.calculatedelta(v);
-            obj.deltaw = obj.calculatedelta(w);
+%             %only for 3 dim case
+%             obj.omegav = 2;
+%             obj.omegaw = 2;
+%             
+%             %only for 3 dim case
+%             obj.deltav = obj.calculatedelta(v);
+%             obj.deltaw = obj.calculatedelta(w);
         end
         
         %only for 3 dim case
-        function res = calculatedelta(obj, u)
-            if(obj.N~=3)
-                display('Only 3dim case!!!!');
-            else
-                temp = zeros(1, obj.N);
-                for i = 1:obj.N
-                    temp(i) = min([ abs(1-u(i,1)), u(i, 2), u(i, 1), abs(1-u(i, 2))]);
-                end
-                res = min(temp);
-            end
-        end
+%         function res = calculatedelta(obj, u)
+%             if(obj.N~=3)
+%                 display('Only 3dim case!!!!');
+%             else
+%                 temp = zeros(1, obj.N);
+%                 for i = 1:obj.N
+%                     temp(i) = min([ abs(1-u(i,1)), u(i, 2), u(i, 1), abs(1-u(i, 2))]);
+%                 end
+%                 res = min(temp);
+%             end
+%         end
         
         function res = f(obj, t, x)
         
@@ -74,7 +74,7 @@ classdef Dynamics
 %                     temp2 = temp2* (abs(x(j)/x(i))) ^obj.w(i, j);
 %                     temp1 = temp1* x(j) ^obj.v(i, j);
 %                     temp2 = temp2* x(j) ^obj.w(i, j);
-%                     % only for 3 dim case
+                    % only for 3 dim case
                     temp1 = temp1* x(j) ^obj.V(i, j, t);
                     temp2 = temp2* x(j) ^obj.W(i, j, t);
 %                     temp1 = temp1* abs(x(j)) ^obj.v(i, j);
@@ -100,8 +100,9 @@ classdef Dynamics
 
 %         res = sqrt(1 - x^2);
 %         res = sqrt(abs(1 - x^2));
-          res = sqrt(x*(obj.xmax - x));
+%           res = sqrt(x*(obj.xmax - x));
 %           res = 1;
+          res = x*(obj.xmax - x);
 
         end
         

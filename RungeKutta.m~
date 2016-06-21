@@ -37,18 +37,18 @@ classdef RungeKutta
                    soly(:, k, i) = solx(:, k);
                    for j=1:obj.s
                        if i>j
-%                            if soly(:, k, i) + obj.mesh.h*obj.A(i, j)*f(obj.fmesh(k, j), soly(:, k, j)) >= 0
+                           if soly(:, k, i) + obj.mesh.h*obj.A(i, j)*f(obj.fmesh(k, j), soly(:, k, j)) >= 0
                                soly(:, k, i) = soly(:, k, i) + obj.mesh.h*obj.A(i, j)*f(obj.fmesh(k, j), soly(:, k, j));
-%                            else
-%                                soly(:, k, i) = 0;
-%                            end
+                           else
+                               
+                           end
                        end
                    end
-%                    if solx(:, k+1) + obj.mesh.h*obj.b(i)*f(obj.fmesh(k, i), soly(:, k, i))  >= 0
+                   if solx(:, k+1) + obj.mesh.h*obj.b(i)*f(obj.fmesh(k, i), soly(:, k, i))  >= 0
                        solx(:, k+1) = solx(:, k+1) + obj.mesh.h*obj.b(i)*f(obj.fmesh(k, i), soly(:, k, i));
-%                    else
-%                        solx(:, k+1) = 0;
-%                    end
+                   else
+                       solx(:, k+1) = 0;
+                   end
                 end
             end
             solx = solx';

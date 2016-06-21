@@ -8,16 +8,13 @@ res = zeros(mesh.n + 1, N);
 res(1, :) = x0;
 
 for k=1:mesh.n
-%     if res(k, :) + mesh.h*f(mesh.t(k), res(k, :))'  >= 0
+    if res(k, :) + mesh.h*f(mesh.t(k), res(k, :))'  >= 0
         res(k+1, :) = res(k, :) + mesh.h*f(mesh.t(k), res(k, :))';
-%     else
-%         res(k+1, :) = 0;
-%     end
+    else
+        res(k+1, :) = 0;
+    end
         
 end
-
-
-
 
 
 end

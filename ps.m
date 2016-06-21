@@ -1,6 +1,6 @@
 n = 5;
 
-eps = 0.35;
+eps = 0.1;
 y1 = linspace(0 + eps, 1 - eps, n);
 y2 = linspace(0 + eps, 1 - eps, n);
 y3 = linspace(0 + eps, 1 - eps, n);
@@ -19,9 +19,9 @@ for i=1:n
                 % solve initial value problem
                 sol = rk.solve(x0,  @(t, x) dynamics.f(t, x));
                 % plot the solutions with respect to each other (2D)
-                plot3(sol(1, :), sol(2, :), sol(3, :), 'LineWidth', 2);             % plot the state trajectory
-                plot3(sol(1, 1), sol(2, 1), sol(3, 1), 'bo', 'LineWidth', 3);       % starting point
-                plot3(sol(1, end), sol(2, end), sol(3, end), 'ks', 'LineWidth', 3); % ending point
+                plot3(sol(:, 1), sol(:, 2), sol(:, 3), 'LineWidth', 2);             % plot the state trajectory
+                plot3(sol(1, 1), sol(1, 2), sol(1, 3), 'bo', 'LineWidth', 3);       % starting point
+                plot3(sol(end, 1), sol(end, 2), sol(end, 3), 'ks', 'LineWidth', 3); % ending point
             end
         end
     end
