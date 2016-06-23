@@ -72,11 +72,11 @@ classdef Dynamics
 %                     temp2 = temp2* (x(j)/x(i)) ^obj.w(i, j);
 %                     temp1 = temp1* (abs(x(j)/x(i))) ^obj.v(i, j);
 %                     temp2 = temp2* (abs(x(j)/x(i))) ^obj.w(i, j);
-%                     temp1 = temp1* x(j) ^obj.v(i, j);
-%                     temp2 = temp2* x(j) ^obj.w(i, j);
-                    % only for 3 dim case
-                    temp1 = temp1* x(j) ^obj.V(i, j, t);
-                    temp2 = temp2* x(j) ^obj.W(i, j, t);
+                    temp1 = temp1* x(j) ^obj.v(i, j);
+                    temp2 = temp2* x(j) ^obj.w(i, j);
+                      % only for 3 dim case
+%                     temp1 = temp1* x(j) ^obj.V(i, j, t);
+%                     temp2 = temp2* x(j) ^obj.W(i, j, t);
 %                     temp1 = temp1* abs(x(j)) ^obj.v(i, j);
 %                     temp2 = temp2* abs(x(j)) ^obj.w(i, j);
                     
@@ -101,8 +101,8 @@ classdef Dynamics
 %         res = sqrt(1 - x^2);
 %         res = sqrt(abs(1 - x^2));
 %           res = sqrt(x*(obj.xmax - x));
-%           res = 1;
-          res = x*(obj.xmax - x);
+          res = 1;
+%           res = x*(obj.xmax - x);
 
         end
         
