@@ -84,7 +84,14 @@ classdef Dynamics
             end
 %             res(i) = obj.mu(i, t) * x(i) * obj.phi(x(i)) * (temp1 - temp2);
             res(i) = obj.mu(i, t) * obj.phi(x(i)) * (temp1 - temp2);
-            
+
+%             %Marco new system
+%             tempm = 0;
+%             for j=1:obj.N
+%                 tempm = tempm + (obj.w(i, j) - obj.v(i, j))*log(x(j));
+%             end
+%             res(i) = -tempm*temp1;
+%             
         end
 
 
