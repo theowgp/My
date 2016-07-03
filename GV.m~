@@ -1,4 +1,4 @@
-function res = GV(x1, x2)
+function res = GV(x1, x2, M)
 
 res = zeros(2, 1);
 

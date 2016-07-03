@@ -1,4 +1,4 @@
-function res = Vdot( x1, x2, M, f )
+function res = Vdot( x1, x2, f )
 
 % 
 % if x2 <= -x1 + 1
@@ -14,12 +14,8 @@ function res = Vdot( x1, x2, M, f )
 % res = [term1 term2] * f(x1, x2);
 
 
-if x2 <= -x1 + 1
-    res = GV(x1, x2, M)'*f(x1, x2);
-else
-    res = (Jacobian(x1, x2)'*GV(ksi(x1, x2), eta(x1, x2), M))'*f(x1, x2);
+res = GV(x1, x2)'*f(x1, x2);
 
-end
 
 
 

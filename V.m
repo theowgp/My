@@ -1,10 +1,5 @@
-function res = V(x1, x2, M)
+function res = V(x1, x2)
 
-if x2 > -x1 +1
-    res = Vu( x1, x2, M);
-else
-    res = Vl( x1, x2, M);
-end
-
+res = (x1-x2)^2;
 end
 
