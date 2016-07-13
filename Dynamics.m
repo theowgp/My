@@ -93,8 +93,16 @@ classdef Dynamics
 %             res(i) = -tempm*temp1;
 %             
         end
-
-
+        
+%         % ACHTUNG here i solve linearized system insted of the system
+%         % itself
+        res = obj.lf(x);
+        end
+        
+        
+        function res = lf(obj, x)
+            delta = obj.v - obj.w;
+            res = delta * x;
         end
 
  

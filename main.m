@@ -11,8 +11,8 @@ mesh = Mesh(T, n);
 
 
 %% define dynamics
-% N = 2;
-N = 3;
+N = 2;
+% N = 3;
 % N = 4;
 
 
@@ -20,12 +20,12 @@ N = 3;
 % v = [0  1/2; 1/2    0 ];
 % w = [1/2   0; 0    1/2 ];
 
-% v = [1/3   2/3; 3/4   1/4];
-% w = [1/2   1/2; 2/5    3/5];
+v = [1/3   2/3; 3/4   1/4];
+w = [1/2   1/2; 2/5    3/5];
 
 % 3 dim case
-v = [1/7 1/4 17/28; 1/6  1/8 34/48; 1/5 1/3 7/15];
-w = [1/9 1/3 15/27; 1/11 1/7 59/77; 1/8 1/5 27/40];
+% v = [1/7 1/4 17/28; 1/6  1/8 34/48; 1/5 1/3 7/15];
+% w = [1/9 1/3 15/27; 1/11 1/7 59/77; 1/8 1/5 27/40];
 
 % v1 = [1/7 2/7 4/7; 1/6 1/8 34/48; 1/5 1/3 7/15];
 % w1 = [1/9 1/3 15/27; 1/11 1/7 59/77; 1/8 1/5 27/40];
@@ -126,13 +126,13 @@ dynamics = Dynamics(N, v, w, v, w, @(t) lambda(T, t), xmax);
 
 %% define initial value
 % 2 dim case
-% x0 = [0.3 0.6];
+x0 = [0.3; 0.6];
 % x0 = [0.1 0.8];
 
 % 3 dim case
 % x0 = [-0.7   0.1   0.4];
 % x0 = [-0.2   0.6  0.9];
-x0 = [0.3   0.6  0.9 ];
+% x0 = [0.3   0.6  0.9 ];
 % x0 = [0.49999   0.5  0.50001];
 % x0 = [10.3   10.6  10.9 ];
 
@@ -178,29 +178,32 @@ t = mesh.t;
 
 
 
-% %% plot the state solutions with respect to time
-% for i=1:N
-%     plot(t, sol(:, i));
-%     hold all
-% end
 
-% %% plot the state solutions with respect to each other 3D case
+%% plot the state solutions with respect to time
+for i=1:N
+    plot(t, sol(:, i));
+    hold all
+end
+
+%% plot the state solutions with respect to each other 
 % figure
 % plot3(sol(:, 1), sol(:, 2), sol(:, 3), 'LineWidth', 2);   
+% plot3(sol(:, 1), sol(:, 2), sol(:, 3)); 
+% plot(sol(:, 1), sol(:, 2), 'LineWidth', 2); 
 
 
 
 % figure % plot the following three plots at a new figure
-% 
+
 % %% plot equilibrium space
 % hold all
-% pes(0.01)
-% 
-% 
+% pes(0.01);
+
+
 % %% plot solutions
 % hold all
 % ps(dynamics, rk, 5, 0.4)
-% 
+
 % %% plot phase portrait
 % hold all
 % ppp(dynamics, 5, 0.4)
@@ -224,12 +227,15 @@ det(v-w)
 % v-w                    
 
 
-% xe = sol(length(t), 1)
+xe = sol(length(t), 1)
 
-display( 'eig(v-w):')
-eig(v-w)
+% display( 'eig(v-w):')
+[S, L] = eig(v-w)
 
 
-a = [1; -0.5; -0.5];
-test(dynamics, 20, 0.001, a);
+% a = [1; -0.5; -0.5];
+% test(dynamics, 20, 0.01, a);
+
+
+% testfi;
 
