@@ -1,6 +1,8 @@
-n = 10;
+function  ppp(dynamics, n, eps)
+% n = 10;
 
-eps = 0.01;
+% eps = 0.01;
+
 y1 = linspace(0 + eps, 1 - eps, n);
 y2 = linspace(0 + eps, 1 - eps, n);
 y3 = linspace(0 + eps, 1 - eps, n);
@@ -28,4 +30,5 @@ ylabel('x_2')
 zlabel('x_3')
 axis tight equal;
 
+end
 

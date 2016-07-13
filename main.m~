@@ -178,11 +178,11 @@ t = mesh.t;
 
 
 
-% %% plot the state solutions with respect to time
-% for i=1:N
-%     plot(t, sol(:, i));
-%     hold all
-% end
+%% plot the state solutions with respect to time
+for i=1:N
+    plot(t, sol(:, i));
+    hold all
+end
 
 % %% plot the state solutions with respect to each other 3D case
 % figure
@@ -190,20 +190,20 @@ t = mesh.t;
 
 
 
-% figure % plot the following three plots at a new figure
-% 
-% %% plot equilibrium space
-% hold all
-% pes(0.01)
-% 
-% 
-% %% plot solutions
-% hold all
-% ps(dynamics, rk, 5, 0.4)
-% 
-% %% plot phase portrait
-% hold all
-% ppp(dynamics, 5, 0.4)
+figure % plot the following three plots at a new figure
+
+%% plot equilibrium space
+hold all
+pes(0.01)
+
+
+%% plot solutions
+hold all
+ps(dynamics, rk, 5, 0.01)
+
+%% plot phase portrait
+hold all
+ppp(dynamics, 5, 0.01)
 
 
   
@@ -224,12 +224,12 @@ det(v-w)
 % v-w                    
 
 
-% xe = sol(length(t), 1)
+xe = sol(length(t), 1)
 
 display( 'eig(v-w):')
 eig(v-w)
 
 
-a = [1; -0.5; -0.5];
-test(dynamics, 20, 0.001, a);
+
+% test
 

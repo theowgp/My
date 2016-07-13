@@ -1,10 +1,13 @@
-function res = GV(x1, x2)
+function res = GV(x, a)
 
-res = zeros(2, 1);
+N = length(x);
 
-res(1) = 2*(x1-x2);
+temp = 0;
+for i = 1:N
+    temp = temp + a(i)*x(i);
+end
 
-res(2) = -2*(x1-x2);
+res = 2*temp*a;
 
 end
 

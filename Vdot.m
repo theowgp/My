@@ -1,20 +1,8 @@
-function res = Vdot( x1, x2, f )
-
-% 
-% if x2 <= -x1 + 1
-%     term1 = 8*M*( x1*(x1+x2)^2 - x1^2*(x1+x2) )/(x1+x2)^4 - 4*M*x2/(x1+x2)^2;
-% 
-%     term2 = -8*M*x1^2/(x1+x2)^3 + 4*M*x1/(x1+x2)^2;
-% else
-%     term1 = 8*M*(1-x2)^2/(2-x1-x2)^3   - 4*M*(1-x2)/(2-x1-x2)^2;
-% 
-%     term2 = 8*M*( -(1-x2)*(2-x1-x2)^2  +  (1-x2)^2*(2-x1-x2) )/(2-x1-x2)^4     -    4*M*( -(2-x1-x2) +(1-x2) )/(2-x1-x2)^2;
-% end
-% 
-% res = [term1 term2] * f(x1, x2);
+function res = Vdot(x, f, a)
 
 
-res = GV(x1, x2)'*f(x1, x2);
+
+res = GV(x, a)'*f(x);
 
 
 

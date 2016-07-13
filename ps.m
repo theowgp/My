@@ -1,6 +1,7 @@
-n = 5;
+function  ps(dynamics, rk, n, eps)
+% n = 5;
 
-eps = 0.05;
+% eps = 0.05;
 y1 = linspace(0 + eps, 1 - eps, n);
 y2 = linspace(0 + eps, 1 - eps, n);
 y3 = linspace(0 + eps, 1 - eps, n);
@@ -28,3 +29,4 @@ for i=1:n
         
 end
 
+end

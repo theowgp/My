@@ -1,5 +1,15 @@
-function res = V(x1, x2)
+function res = V(x, a)
 
-res = (x1-x2)^2;
+N = length(x);
+
+temp = 0;
+for i = 1:N
+    temp = temp + a(i)*x(i);
+end
+
+res = temp^2;
+
+
+
 end
 
