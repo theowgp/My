@@ -34,7 +34,7 @@ classdef Dynamics
             obj.gamma = gamma;
             obj.lambda = lambda;
             obj.xmax = xmax;
-        end
+       end
         
 
         
@@ -62,7 +62,7 @@ classdef Dynamics
 
                     end
                 end
-%                 temp2 = 0;
+                temp2 = 0;
                 res(i) = obj.mu(i, t) * x(i) * obj.phi(x(i)) * (temp1 - temp2);
 %                 res(i) = obj.mu(i, t) * obj.phi(x(i)) * (temp1 - temp2);
 
